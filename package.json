@@ -1,0 +1,19 @@
+{
+  "name": "customerproject",
+  "version": "1.0.0",
+  "description": "customer project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Triveni Yadaw",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.4",
+    "path": "^0.12.7",
+    "q": "^1.5.1"
+  }
+}

@@ -1,0 +1,43 @@
+{
+    "env": "D",
+    // "winston": {
+    //     "level": "debug"
+    // },
+    "mongoUrl": "mongodb://localhost/mydb"
+    // "maxFileSize": 1024000000,
+    // "mongoConnectionOptions": {
+    //     "server": {
+    //         "poolSize": 20
+    //     }
+    // }
+    // "superAdminUser": {
+    //     "email": "admin@aamedical.com",
+    //     "password": "admin",
+    //     "firstName": "Admin",
+    //     "lastName": "Admin",
+    //     "status": "Active",
+    //     "role": "admin"
+    // },  
+    // "organization": {
+    //     "orgName": "aamedical",
+    //     "status": "Active",
+    //     "logo": "https://porecon.s3.us-east-2.amazonaws.com/po_images/aa-medical-whiteall.png",
+    //     "headerColor": "rgb(0, 117, 178)",
+    //     "footerColor": "rgb(114, 123, 131)",
+    //     "footerTextColor": "rgb(91, 86, 86)",
+    //     "buttonColor": "btn-primary",
+    //     "footerText": "© 2017. All rights reserved. Authorized Acquisitions, LLC."
+    // },
+    // "clientUrl": "http://localhost:8000",
+    // "confirmPassUrl": "/#!/confirm_password/",
+    // "scopeRepairUrl" : "/#!/scopeRepair?edit=",
+    // "mailConfig": {
+    //     "mailSender": "akankshapabaiya728@gmail.com"
+    // },
+    // "jwtSecret": "asdfghjkl",
+    // "salt": "GYQ41CUa5UNGe9FW",
+    // "socket": {
+    //     "port": 3001
+    // },
+    // "viewPath": "./views/"
+}
