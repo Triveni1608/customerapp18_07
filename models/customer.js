@@ -2,7 +2,7 @@
 /**
  * Schema for User 
  * 
- * @Author Akanksha Pabaiya
+ * @Author
  */
 const mongoose = require('../common/database').mongoose;
 const Schema = mongoose.Schema;
@@ -20,8 +20,7 @@ let customerSchema = new mongoose.Schema({
     },
     firstName: {
         type: String,
-        maxlength: 255,
-        required: [true, "The name must be set."]
+        maxlength: 255
     },
     lastName: {
         type: String,
@@ -34,6 +33,6 @@ let customerSchema = new mongoose.Schema({
     
 });
 
-var CustomerModel = mongoose.model("customer", customerSchema);
+var Customer = mongoose.model("customer", customerSchema);
 
-module.exports = CustomerModel;
+module.exports = Customer;

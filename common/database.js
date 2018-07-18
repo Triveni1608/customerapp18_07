@@ -9,11 +9,11 @@
 const mongoose = require('mongoose');
 mongoose.Promise = require('q').Promise; 
 let databaseConfig = {
-	mongoUrl : "mongodb://localhost/testDB"
+	mongoUrl : "mongodb://localhost:27017/testDB"
 }
 
 //connect mongodb database
-mongoose.connect(databaseConfig.mongoUrl,{ useMongoClient: true }); 
+mongoose.connect(databaseConfig.mongoUrl,{ useNewUrlParser: true }); 
 
 // Handle connected event
 mongoose.connection.on('connected', function(){
