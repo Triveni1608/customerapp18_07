@@ -39,23 +39,27 @@ const Customer = require('../models/customer');
 
 
 exports.create = (req, res) => {
-    // Validate request
-    if(!req.body) {
+    if (!req.body) {
         return res.status(400).send({
-            message: "Note content can not be empty"
+            message: "User can not be empty"
         });
     }
-
-    // Create a Note
-    var myData = new Customer(req.body);
-
-    // Save Note in the database
-    myData.save()
-    .then(data => {
-        res.send(data);
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while creating the Note."
+    let customer = new Customer(req.body);
+    customer.dateOfBirth = new Date(customer.dateOfBirth).toDateString();
+    customer.save()
+        .then(data => {
+            return res.json({
+                code: 1,
+                message: "User Saved Successfully ",
+                data: data,
+                status: true
+            });
+        }).catch(err => {
+            return res.json({
+                code: err.code,
+                message: err.message,
+                error: err,
+                status: false
+            });
         });
-    });
 };
