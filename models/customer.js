@@ -37,10 +37,10 @@ let customerSchema = new mongoose.Schema({
         maxlength: 255,
         unique: true,
         required: true,
-        validate: [
-           // { validator: validator.isEmail, msg: 'invalid email address'},
-            { validator: isEmailUnique, msg: 'Email already exists'}
-          ]
+        // validate: [
+        //    // { validator: validator.isEmail, msg: 'invalid email address'},
+        //     { validator: isEmailUnique, msg: 'Email already exists'}
+        //   ]
     },
     addressDetail: {
         addressLine1: { type: String, maxlength: 255 },

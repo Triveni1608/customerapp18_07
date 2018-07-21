@@ -1,43 +1,10 @@
 const mongoose = require('mongoose');
 const Customer = require('../models/customer');
 
-// module.exports.addUser = function (req, res,next) {
-//     if (!req.body) {
-//         console.log(req.body)
-//        // logger.error("body not Found");
-//         return res.json({
-//             code: 0,
-//             message: "Body not found.",
-//         });
-//     }
 
-//     let customerModel = new Customer({
-//         firstName: req.body.firstName,
-//         lastName: req.body.lastName,
-//         phoneNumber: req.body.phoneNumber,
-//         createdBy: req.body.createdBy,
-//         modifiedBy: req.body.createdBy
-//     });
-//     Customer.addUser(function (err, customerModel) {
-//         if (err) {
-//            // logger.error("Error in Saving User. : " + err);
-//             return res.json({
-//                 code: 0,
-//                 message: "Error in Saving User. : " + err,
-//                 error: err
-//             });
-//         } else {
-//            // logger.info("User Saved Successfully ");
-//             return res.json({
-//                 code: 1,
-//                 message: "User Saved Successfully ",
-//                 data: data
-//             });
-//         }
-//     });
-// }
-
-
+/**
+ * Create User API
+ **/
 exports.create = (req, res) => {
     if (!req.body) {
         return res.status(400).send({
@@ -54,6 +21,131 @@ exports.create = (req, res) => {
                 data: data,
                 status: true
             });
+        }).catch(err => {
+            return res.json({
+                code: err.code,
+                message: err.message,
+                error: err,
+                status: false
+            });
+        });
+};
+
+/**
+ * Get User API
+ **/
+exports.getCustomer = (req, res) => {
+    Customer.find()
+        .then(data => {
+            if (data == null) {
+                return res.json({
+                    code: 0,
+                    message: "No record found",
+                    status: false
+                });
+            } else {
+                return res.json({
+                    code: 1,
+                    message: "Customer return successfully",
+                    data: data,
+                    status: true
+                });
+            }
+        }).catch(err => {
+            return res.json({
+                code: err.code,
+                message: err.message,
+                error: err,
+                status: false
+            });
+        });
+};
+
+
+/**
+ * Get User  By Id API
+ **/
+exports.getCustomerById = (req, res) => {
+    Customer.findById(req.params.id)
+        .then(data => {
+            if (data == null) {
+                return res.json({
+                    code: 0,
+                    message: "Customer not exist in the database",
+                    status: false
+                });
+            } else {
+                return res.json({
+                    code: 1,
+                    message: "Customer return successfully",
+                    data: data,
+                    status: true
+                });
+            }
+        }).catch(err => {
+            return res.json({
+                code: err.code,
+                message: err.message,
+                error: err,
+                status: false
+            });
+        });
+};
+
+/**
+ * Update User  API
+ **/
+exports.updateCustomer = (req, res) => {
+    let customer = req.body || {},
+        opts = {
+            new: true
+        }
+    Customer.findByIdAndUpdate({ _id: req.params.id }, customer, opts)
+        .then(data => {
+            if(data==null){
+                return res.json({
+                    code: 0,
+                    message: "Customer not exist in the database",
+                    status: false
+                });
+            }else{
+                return res.json({
+                    code: 1,
+                    message: "Customer updated successfully",
+                    data: data,
+                    status: true
+                });
+            }
+        }).catch(err => {
+            return res.json({
+                code: err.code,
+                message: err.message,
+                error: err,
+                status: false
+            });
+        });
+};
+
+
+/**
+ * delete  User  API
+ **/
+exports.deleteCustomer = (req, res) => {
+    Customer.findOneAndRemove({ _id: req.params.id })
+        .then(data => {
+            if (data == null) {
+                return res.json({
+                    code: 0,
+                    message: "Customer not exist in the database",
+                    status: false
+                });
+            } else {
+                return res.json({
+                    code: 1,
+                    message: "Customer deleted successfully",
+                    status: true
+                });
+            }
         }).catch(err => {
             return res.json({
                 code: err.code,
