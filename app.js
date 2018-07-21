@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const db = require('./common/database');
 const CustomerController = require('./controller/customer');
 var customerRoute = require('./routes/customer'); 
+var orderRoute = require('./routes/order'); 
 
 /**
  * Routing
@@ -26,6 +27,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
  app.use(customerRoute);
+ app.use(orderRoute);
 app.get('/', function(req, res){
     console.log("fds")
 })

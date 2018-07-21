@@ -7,4 +7,5 @@ router.get('/customer',customerController.getCustomer);
 router.get('/customer/:id',customerController.getCustomerById);
 router.put('/customer/:id',customerController.updateCustomer);
 router.delete('/customer/:id',customerController.deleteCustomer);
+//router.post('/send-mail',customerController.sendMail);
 module.exports = router;

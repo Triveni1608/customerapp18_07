@@ -1,0 +1,12 @@
+"use strict";
+const express = require('express');
+const router = express.Router();
+const orderController = require('../controller/order');
+router.post('/order',orderController.createOrder);
+router.get('/order',orderController.getOrder);
+router.get('/order/:id',orderController.getOrderById);
+router.put('/order/:id',orderController.updateOrder);
+router.delete('/order/:id',orderController.deleteOrder);
+router.get('/customerOrderDetails',orderController.getCustomerOrderDetails);
+//router.post('/send-mail',customerController.sendMail);
+module.exports = router;
