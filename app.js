@@ -7,6 +7,11 @@ const db = require('./common/database');
 const CustomerController = require('./controller/customer');
 var customerRoute = require('./routes/customer'); 
 var orderRoute = require('./routes/order'); 
+var argv = require('minimist')(process.argv.slice(2));
+var subpath = express();
+var swagger = require('swagger-node-express').createNew(subpath);
+var swaggerUi = require('swagger-ui-express');
+var swaggerDocument = require('./dist/api-docs.json');
 
 /**
  * Routing
@@ -25,6 +30,11 @@ app.use(bodyParser.urlencoded({
  
 // parse application/json
 app.use(bodyParser.json())
+
+
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api/v1', subpath);
 
  app.use(customerRoute);
  app.use(orderRoute);
